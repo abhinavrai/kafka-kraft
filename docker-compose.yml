@@ -19,6 +19,7 @@ services:
         ipv4_address: 172.21.0.11
     volumes:
     - ./config/kafka1/server.properties:/srv/kafka/broker/config/server.properties
+    - ./config/log4j.properties:/srv/kafka/broker/config/log4j.properties
     - kafka1:/srv/kafka/data
     deploy:
       replicas: 1
@@ -45,6 +46,7 @@ services:
         ipv4_address: 172.21.0.12
     volumes:
     - ./config/kafka2/server.properties:/srv/kafka/broker/config/server.properties
+    - ./config/log4j.properties:/srv/kafka/broker/config/log4j.properties
     - kafka2:/srv/kafka/data
     deploy:
       replicas: 1
@@ -71,6 +73,7 @@ services:
         ipv4_address: 172.21.0.13
     volumes:
     - ./config/kafka3/server.properties:/srv/kafka/broker/config/server.properties
+    - ./config/log4j.properties:/srv/kafka/broker/config/log4j.properties
     - kafka3:/srv/kafka/data
     deploy:
       replicas: 1
