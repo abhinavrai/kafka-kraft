@@ -20,11 +20,9 @@ RUN curl "https://archive.apache.org/dist/kafka/${KAFKA_VERSION}/kafka_${SCALA_V
     && tar -zxf /tmp/kafka.tgz --directory /srv/kafka/broker --strip 1
 RUN ["chmod", "-R", "u+x", "/srv/kafka/broker/bin"]
 
-COPY --chown=kafka:kafka config/docker-entrypoint.sh /srv/kafka/start-kafka-kraft.sh
+COPY --chown=kafka:kafka config/start-kafka-kraft.sh /srv/kafka/start-kafka-kraft.sh
 ENV PATH="$PATH:/srv/kafka/broker/bin"
 
 RUN chmod +x  start-kafka-kraft.sh
-
-EXPOSE 9092
 
 CMD ["./start-kafka-kraft.sh"]

@@ -7,9 +7,11 @@ services:
       context: .
     environment:
       KAFKA_HEAP_OPTS: "-Xms1024m -Xmx1024m"
-      KAFKA_LOG4J_LOGGERS: "org.apache.kafka=ERROR, kafka=ERROR, org.apache.kafka.raft=ERROR, kafka.cluster=ERROR, kafka.controller=ERROR, kafka.coordinator=ERROR, kafka.log=ERROR, kafka.server=ERROR, state.change.logger=ERROR"
     ports:
-        - "9092:9092"
+      - target: 9192
+        published: 9192
+        protocol: tcp/udp
+        mode: host
     networks:
       kafka-net:
         aliases:
@@ -31,9 +33,11 @@ services:
       context: .
     environment:
       KAFKA_HEAP_OPTS: "-Xms1024m -Xmx1024m"
-      KAFKA_LOG4J_LOGGERS: "org.apache.kafka=ERROR, kafka=ERROR, org.apache.kafka.raft=ERROR, kafka.cluster=ERROR, kafka.controller=ERROR, kafka.coordinator=ERROR, kafka.log=ERROR, kafka.server=ERROR, state.change.logger=ERROR"
     ports:
-        - "9292:9092"
+      - target: 9292
+        published: 9292
+        protocol: tcp/udp
+        mode: host
     networks:
       kafka-net:
         aliases:
@@ -55,9 +59,11 @@ services:
       context: .
     environment:
       KAFKA_HEAP_OPTS: "-Xms1024m -Xmx1024m"
-      KAFKA_LOG4J_LOGGERS: "org.apache.kafka=ERROR, kafka=ERROR, org.apache.kafka.raft=ERROR, kafka.cluster=ERROR, kafka.controller=ERROR, kafka.coordinator=ERROR, kafka.log=ERROR, kafka.server=ERROR, state.change.logger=ERROR"
     ports:
-        - "9392:9092"
+      - target: 9392
+        published: 9392
+        protocol: tcp/udp
+        mode: host
     networks:
       kafka-net:
         aliases:
@@ -79,7 +85,7 @@ networks:
     ipam:
       config:
         - subnet: 172.21.0.0/16
-    driver: bridge
+    # driver: bridge
 
 volumes:
   kafka1:
