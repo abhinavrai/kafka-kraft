@@ -6,7 +6,8 @@ services:
     build: 
       context: .
     environment:
-      KAFKA_HEAP_OPTS: "-Xms256m -Xmx256m"
+      KAFKA_HEAP_OPTS: "-Xms1024m -Xmx1024m"
+      KAFKA_LOG4J_LOGGERS: "org.apache.kafka=ERROR, kafka=ERROR, org.apache.kafka.raft=ERROR, kafka.cluster=ERROR, kafka.controller=ERROR, kafka.coordinator=ERROR, kafka.log=ERROR, kafka.server=ERROR, state.change.logger=ERROR"
     ports:
         - "9092:9092"
     networks:
@@ -29,7 +30,8 @@ services:
     build: 
       context: .
     environment:
-      KAFKA_HEAP_OPTS: "-Xms256m -Xmx256m"
+      KAFKA_HEAP_OPTS: "-Xms1024m -Xmx1024m"
+      KAFKA_LOG4J_LOGGERS: "org.apache.kafka=ERROR, kafka=ERROR, org.apache.kafka.raft=ERROR, kafka.cluster=ERROR, kafka.controller=ERROR, kafka.coordinator=ERROR, kafka.log=ERROR, kafka.server=ERROR, state.change.logger=ERROR"
     ports:
         - "9292:9092"
     networks:
@@ -52,7 +54,8 @@ services:
     build: 
       context: .
     environment:
-      KAFKA_HEAP_OPTS: "-Xms256m -Xmx256m"
+      KAFKA_HEAP_OPTS: "-Xms1024m -Xmx1024m"
+      KAFKA_LOG4J_LOGGERS: "org.apache.kafka=ERROR, kafka=ERROR, org.apache.kafka.raft=ERROR, kafka.cluster=ERROR, kafka.controller=ERROR, kafka.coordinator=ERROR, kafka.log=ERROR, kafka.server=ERROR, state.change.logger=ERROR"
     ports:
         - "9392:9092"
     networks:

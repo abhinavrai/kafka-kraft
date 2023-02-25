@@ -16,15 +16,15 @@ WORKDIR /srv/kafka
 
 RUN ["mkdir", "-p", "/srv/kafka/broker"]
 RUN ["mkdir", "-p", "/srv/kafka/data"]
-
 RUN curl "https://archive.apache.org/dist/kafka/${KAFKA_VERSION}/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz" -o /tmp/kafka.tgz \
-    && tar -xvzf /tmp/kafka.tgz --directory /srv/kafka/broker --strip 1
-
+    && tar -zxf /tmp/kafka.tgz --directory /srv/kafka/broker --strip 1
 RUN ["chmod", "-R", "u+x", "/srv/kafka/broker/bin"]
 
+COPY --chown=kafka:kafka config/start-kafka-kraft.sh /srv/kafka
 ENV PATH="$PATH:/srv/kafka/broker/bin"
 
-COPY --chown=kafka:kafka config/docker-entrypoint.sh /srv/kafka
-RUN chmod +x  docker-entrypoint.sh
+RUN chmod +x  start-kafka-kraft.sh
 
-CMD ["./docker-entrypoint.sh"]
+EXPOSE 9092
+
+CMD ["./start-kafka-kraft.sh"]
