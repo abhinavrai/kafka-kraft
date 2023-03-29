@@ -5,7 +5,7 @@ FROM strongestleo/openjdk11-jre-headless-alpine:11.0.18_p10-r0
 ENV KAFKA_VERSION=3.4.0
 ENV SCALA_VERSION=2.13
 
-RUN ["apk", "add", "curl=curl-7.88.1-r1"]
+RUN ["apk", "add", "curl=7.88.1-r1"]
 RUN ["apk", "add", "bash=5.2.15-r0"]
 
 RUN ["mkdir", "-p", "/srv/kafka"]
